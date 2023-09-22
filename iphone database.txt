@@ -1,0 +1,22 @@
+CREATE DATABASE iPhoneStore;
+
+
+USE iPhoneStore;
+
+
+CREATE TABLE iPhones (
+    iPhoneID INT PRIMARY KEY AUTO_INCREMENT,
+    Model VARCHAR(255) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    ReleaseYear INT,
+    ScreenSize DECIMAL(4, 2),
+    StorageCapacity INT,
+    OperatingSystem VARCHAR(50),
+    CameraResolution VARCHAR(50),
+    BatteryLife VARCHAR(50)
+);
+INSERT INTO iPhones (Model, Price, ReleaseYear, ScreenSize, StorageCapacity, OperatingSystem, CameraResolution, BatteryLife )
+VALUES
+    ('iPhone 13 Pro', 1099.99, 2021, 6.1, 128, 'iOS 15', '12 MP', 'Up to 22 hours'),
+    ('iPhone SE (2020)', 399.99, 2020, 4.7, 64, 'iOS 15', '12 MP', 'Up to 13 hours'),
+    ('iPhone 12 Mini', 699.99, 2020, 5.4, 64, 'iOS 15', '12 MP', 'Up to 15 hours');
