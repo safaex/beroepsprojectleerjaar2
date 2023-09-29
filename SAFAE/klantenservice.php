@@ -22,14 +22,6 @@
 <h1>Welkom bij onze Klantenservice</h1>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#faq">Veelgestelde vragen</a></li>
-            <li><a href="#support">Ondersteuning</a></li>
-        </ul>
-    </nav>
-
     <section id="contact">
         <h2>Contacteer Ons</h2>
         <p>Heb je vragen of opmerkingen? Neem gerust contact met ons op.</p>
@@ -40,7 +32,12 @@
     <section id="faq">
         <h2>Veelgestelde vragen</h2>
         <p>Bekijk hier onze veelgestelde vragen en antwoorden.</p>
-        <!-- Voeg hier de lijst met veelgestelde vragen en antwoorden toe -->
+        <p> hoeveel kost het om een scherm te reparenen? </p>
+        <p> hoelang is de garantie op mijn toestel? </p>
+        <p> wat zijn de retourkosten? </p>
+        <p> 
+
+    
     </section>
 
     <section id="support">
