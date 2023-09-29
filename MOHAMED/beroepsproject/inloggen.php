@@ -10,7 +10,7 @@
   <style>
     body {
       background-image: url(back.gif);
-      background-size: cover;
+      background-size: 120%;
     }
 
     main {
@@ -22,12 +22,47 @@
 
     }
 
-    header {
+    .navbar {
+      width: 85%;
+      margin: auto;
+      padding: 35px 0;
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      background-color: rgba(255, 255, 255, 0.4);
-      height: 2cm;
+      justify-content: space-between;
+    }
+
+    .logo {
+      width: 130px;
+      cursor: pointer;
+    }
+
+    .navbar ul li {
+      list-style: none;
+      display: inline-block;
+      margin: 0 20px;
+      position: relative;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      text-transform: uppercase;
+
+    }
+
+    .navbar ul li::after {
+      content: '';
+      height: 3px;
+      width: 0;
+      background: #009688;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      transition: 0.5s;
+    }
+
+    .navbar ul li:hover:after {
+      width: 100%;
     }
 
     a {
@@ -101,40 +136,45 @@
     }
   </style>
 </head>
+<div class="navbar">
+<a href="homepage.php"><img src="logo.png" alt="Mijn Logo" class="logo"></a>
+  <ul>
+    <li><a href="homepage.php">HOME</a></li>
+    <li><a href="overons.php">OVER ONS</a></li>
+    <li><a href="klantenservice.php">KLANTENSERVICE</a></li>
+    <li><a href="inloggen.php">INLOGGEN</a></li>
+  </ul>
+</div>
 
 <body>
-  <header>
-    <h1>Inloggen</h1>
-    <a class="btn btn-primary" href="home.html" role="button">Home</a>
-    <a class="btn btn-primary" href="inloggen.php" role="button">Inloggen</a>
-  </header>
+
   <?php
 
-require('database.php');
+  require('database.php');
 
-if (isset($_POST['submit'])) {
+  if (isset($_POST['submit'])) {
 
-  $email = $_POST["email"];
-  $wachtwoord = $_POST["wachtwoord"];
+    $email = $_POST["email"];
+    $wachtwoord = $_POST["wachtwoord"];
 
-  $stmt = $pdo->prepare("SELECT email, pwd FROM users WHERE pwd=:wachtwoord AND email = :email");
+    $stmt = $pdo->prepare("SELECT email, pwd FROM users WHERE pwd=:wachtwoord AND email = :email");
 
-  $stmt->execute(["wachtwoord" => $wachtwoord, "email" => $email]);
+    $stmt->execute(["wachtwoord" => $wachtwoord, "email" => $email]);
 
-  $user = $stmt->fetch();
+    $user = $stmt->fetch();
 
-  if (!$user) {
+    if (!$user) {
 
-    echo "<h3 style='    .form_class {
+      echo "<h3 style='    .form_class {
       width: 500px;
       padding: 40px;
       border-radius: 8px;
       font-family: 'system-ui';
       box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
     }'>Ongeldige combinatie van gebruikersnaam en wachtwoord</h3>";
-  } else {
+    } else {
 
-    echo "<h3 style='    .form_class {
+      echo "<h3 style='    .form_class {
       width: 500px;
       padding: 40px;
       border-radius: 8px;
@@ -143,9 +183,9 @@ if (isset($_POST['submit'])) {
       text-align: center;
     }
     '>je bent ingelogd </h3>";
+    }
   }
-}
-?>
+  ?>
   <main>
     <form id="login_form" class="form_class" method="POST">
       <div class="form_div">
