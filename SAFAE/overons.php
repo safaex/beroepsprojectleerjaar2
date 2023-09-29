@@ -12,8 +12,8 @@
             <img src="telefoon.jpg" class="logo">
 
         <ul>
-            <li><a href="homepage.html">HOME</a></li>
-            <li><a href="overons.html">OVER ONS</a></li>
+            <li><a href="homepage.php">HOME</a></li>
+            <li><a href="overons.php">OVER ONS</a></li>
             <li><a href="klantenservice.html">KLANTENSERVICE</a></li>
             <li><a href="inloggen.php">INLOGGEN</a></li>
         </ul>
