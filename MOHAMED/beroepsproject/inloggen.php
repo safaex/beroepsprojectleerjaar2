@@ -194,7 +194,7 @@
         <label>Password:</label>
         <input id="pass" class="field_class" name="wachtwoord" type="password" placeholder="Wachtwoord" min=8> <br>
         <button class="submit_class" type="submit" form="login_form" name="submit">Inloggen</button><br>
-        <a href="signup.php">Geen account? klick hier om een te maken</a>
+        <a href="signup.php">Geen account? Klik hier om een te maken</a>
       </div>
     </form>
   </main>
