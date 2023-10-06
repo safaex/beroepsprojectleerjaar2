@@ -67,8 +67,8 @@ if (isset($_POST['submit'])) {
     <h4>Contactgegevens</h4>
     <p><strong>Phonix</strong></p>
     <p>Adres: Mercopolostraat 12, 1055 PW Amsterdam</p>
-    <p>Telefoon: 120-3309321</p>
-    <p>Email: info@Phonix.com</p>
+    <p>  <a href="tel:+120-3309321"> Telefoon: 120-3309321</a></p>
+    <p><a href="mailto:Phonix@info.com">Phonix@info.com</a> </p>
   </footer>
 </body>
 
