@@ -9,7 +9,7 @@
 <body>
     <div class="banner">
         <div class="navbar">
-            <img src="telefoon.jpg" class="logo">
+            <img src="logo.png" class="logo">
 
         <ul>
             <li><a href="homepage.php">HOME</a></li>
