@@ -12,7 +12,7 @@
             <img src="logo.png" class="logo">
 
         <ul>
-            <li><a href="homepage.php">HOME</a></li>
+            <li><a href="/beroepsprojectleerjaar2/SAFAE/homepage.php">HOME</a></li>
             <li><a href="overons.php">OVER ONS</a></li>
             <li><a href="klantenservice.php">KLANTENSERVICE</a></li>
             <li><a href="inloggen.php">INLOGGEN</a></li>
