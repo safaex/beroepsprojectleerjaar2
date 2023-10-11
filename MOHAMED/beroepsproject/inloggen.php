@@ -1,21 +1,21 @@
 <?php
 
-require('database.php');
-
-$message = "";
+include 'config.php';
+session_start();
 
 if (isset($_POST['submit'])) {
-  $email = $_POST["email"];
-  $wachtwoord = $_POST["wachtwoord"];
 
-  $stmt = $pdo->prepare("SELECT email, pwd FROM users WHERE pwd=:wachtwoord AND email = :email");
-  $stmt->execute(["wachtwoord" => $wachtwoord, "email" => $email]);
-  $user = $stmt->fetch();
+  $email = mysqli_real_escape_string($conn, $_POST['email']);
+  $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
 
-  if (!$user) {
-    $message = "Email or password is incorrect!";
+  $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+
+  if (mysqli_num_rows($select) > 0) {
+    $row = mysqli_fetch_assoc($select);
+    $_SESSION['user_id'] = $row['id'];
+    header('location:index.php');
   } else {
-    $message = "You are logged in!";
+    $message[] = 'incorrect password or email!';
   }
 }
 
@@ -45,18 +45,21 @@ if (isset($_POST['submit'])) {
     </ul>
   </div>
 
-  <?php if (!empty($message)) : ?>
-  <h3 style="text-align: center; font-size:30px;">
-    <?php echo $message; ?>
-  </h3>
-<?php endif; ?>
   <main>
     <form id="login_form" class="form_class" method="POST">
+      <?php
+      if (isset($message)) {
+        foreach ($message as $message) {
+          echo '<div class="message" style="text-align: center; font-size:30px; color: red;"  onclick="this.remove();">' . $message . '</div>';
+        }
+      }
+      ?>
+
       <div class="form_div">
         <label>Email:</label>
         <input class="field_class" name="email" type="email" placeholder="Email" autofocus>
         <label>Password:</label>
-        <input id="pass" class="field_class" name="wachtwoord" type="password" placeholder="Wachtwoord" min="8"> <br>
+        <input id="pass" class="field_class" name="password" type="password" placeholder="Wachtwoord" min="8"> <br>
         <button class="submit_class" type="submit" form="login_form" name="submit">Inloggen</button><br>
         <a href="signup.php">Geen account? Klik hier om een te maken</a>
       </div>
@@ -67,7 +70,7 @@ if (isset($_POST['submit'])) {
     <h4>Contactgegevens</h4>
     <p><strong>Phonix</strong></p>
     <p>Adres: Mercopolostraat 12, 1055 PW Amsterdam</p>
-    <p>  <a href="tel:+120-3309321"> Telefoon: 120-3309321</a></p>
+    <p> <a href="tel:+120-3309321"> Telefoon: 120-3309321</a></p>
     <p><a href="mailto:Phonix@info.com">Phonix@info.com</a> </p>
   </footer>
 </body>
