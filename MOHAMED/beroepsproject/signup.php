@@ -3,24 +3,37 @@
 include 'config.php';
 
 if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $birthday = $_POST['birthday'];
+    $rawPassword = $_POST['password'];
+    $hashedPassword = password_hash($rawPassword, PASSWORD_BCRYPT);
 
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $birthday = mysqli_real_escape_string($conn, $_POST['birthday']);
-    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+    try {
+        $stmt = $conn->prepare("SELECT * FROM user_form WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
 
-    $select = mysqli_query($conn, "SELECT * FROM user_form WHERE email = '$email' AND password = '$pass'") or die('query failed');
+        if ($stmt->rowCount() > 0) {
+            $message[] = 'User already exists!';
+        } else {
+            $insertStmt = $conn->prepare("INSERT INTO user_form (username, email, geboortedatum, password) VALUES (:name, :email, :birthday, :password)");
+            $insertStmt->bindParam(':name', $name);
+            $insertStmt->bindParam(':email', $email);
+            $insertStmt->bindParam(':birthday', $birthday);
+            $insertStmt->bindParam(':password', $hashedPassword);
+            $insertStmt->execute();
 
-    if (mysqli_num_rows($select) > 0) {
-        $message[] = 'User already exists!';
-    } else {
-        mysqli_query($conn, "INSERT INTO user_form (username, email, geboortedatum, password) VALUES('$name', '$email', '$birthday', '$pass')") or die('query failed');
-        // $message[] = 'Registered successfully!';
-        header('location:inloggen.php');
+            header('location:inloggen.php');
+        }
+    } catch (PDOException $e) {
+        die('Databasefout: ' . $e->getMessage());
     }
 }
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,15 +61,15 @@ if (isset($_POST['submit'])) {
 
 
     <main>
-        
+
         <form id="registreren_form" action="signup.php" class="form_class" method="POST">
-        <?php
-    if (isset($message)) {
-        foreach ($message as $message) {
-            echo '<div class="message" style="text-align: center; font-size:30px; color: red;"  onclick="this.remove();">' . $message . '</div>';
-        }
-    }
-    ?>
+            <?php
+            if (isset($message)) {
+                foreach ($message as $message) {
+                    echo '<div class="message" style="text-align: center; font-size:30px; color: red;"  onclick="this.remove();">' . $message . '</div>';
+                }
+            }
+            ?>
             <div class="form_div">
                 <label>Name:</label>
                 <input class="field_class" name="name" type="text" placeholder="Naam" autofocus required>

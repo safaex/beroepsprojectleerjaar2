@@ -4,22 +4,29 @@ include 'config.php';
 session_start();
 
 if (isset($_POST['submit'])) {
+  $email = $_POST['email'];
+  $rawPassword = $_POST['password'];
 
-  $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+  try {
+    $stmt = $conn->prepare("SELECT * FROM user_form WHERE email = :email AND password = :password");
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $rawPassword);
+    $stmt->execute();
 
-  $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
-
-  if (mysqli_num_rows($select) > 0) {
-    $row = mysqli_fetch_assoc($select);
-    $_SESSION['user_id'] = $row['id'];
-    header('location:index.php');
-  } else {
-    $message[] = 'incorrect password or email!';
+    if ($stmt->rowCount() > 0) {
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      $_SESSION['user_id'] = $row['id'];
+      header('location:index.php');
+    } else {
+      $message[] = 'Onjuist wachtwoord of e-mailadres!';
+    }
+  } catch (PDOException $e) {
+    die('Databasefout: ' . $e->getMessage());
   }
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
