@@ -119,7 +119,7 @@ if (isset($message)) {
    <p> email : <span><?php echo $fetch_user['email']; ?></span> </p>
    <div class="flex">
       <a href="inloggen.php" class="btn">Login</a>
-      <a href="signup.php" class="option-btn">Register</a>
+      <a href="Home.php" class="option-btn">Home</a>
       <a href="index.php?logout=<?php echo $user_id; ?>" onclick="return confirm('Are you sure you want to logout?');" class="delete-btn">Logout</a>
    </div>
 
@@ -139,10 +139,14 @@ if (isset($message)) {
          while ($fetch_product = $select_product->fetch(PDO::FETCH_ASSOC)) {
    ?>
       <form method="post" class="box" action="">
-         <img src="images/13<?php echo $fetch_product['image']; ?>" alt="">
+         <img src="../images/12.jpg"<?php echo $fetch_product['image']; ?> alt="image">
+         <img src="../images/12 PRO MAX.jpg" alt="" srcset="">
+         <img src="../images/13-PRO-MAX.jpg" alt="" srcset="">
+
          <div class="name"><?php echo $fetch_product['name']; ?></div>
          <div class="price">$<?php echo $fetch_product['price']; ?>/-</div>
          <input type="number" min="1" name="product_quantity" value="1">
+         <input type="hidden" name="product_image" value="<?php echo $fetch_product['image']; ?>">
          <input type="hidden" name="product_image" value="<?php echo $fetch_product['image']; ?>">
          <input type="hidden" name="product_name" value="<?php echo $fetch_product['name']; ?>">
          <input type="hidden" name="product_price" value="<?php echo $fetch_product['price']; ?>">
