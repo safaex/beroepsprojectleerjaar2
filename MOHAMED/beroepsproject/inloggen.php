@@ -5,27 +5,33 @@ session_start();
 
 if (isset($_POST['submit'])) {
   $email = $_POST['email'];
-  $rawPassword = $_POST['password'];
+  $password = $_POST['password'];
 
   try {
-    $stmt = $conn->prepare("SELECT * FROM user_form WHERE email = :email AND password = :password");
+    $stmt = $conn->prepare("SELECT * FROM user_form WHERE email = :email");
     $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $rawPassword);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      $_SESSION['user_id'] = $row['id'];
-      header('location:index.php');
+      $hashedPassword = $row['password'];
+
+      if (password_verify($password, $hashedPassword)) {
+        $_SESSION['user_id'] = $row['id'];
+        header('location:index.php');
+      } else {
+        $message[] = 'Incorrect password!';
+      }
     } else {
-      $message[] = 'Onjuist wachtwoord of e-mailadres!';
+      $message[] = 'Email address not found!';
     }
   } catch (PDOException $e) {
-    die('Databasefout: ' . $e->getMessage());
+    die('Database error: ' . $e->getMessage());
   }
 }
 
 ?>
+
 
 
 <!DOCTYPE html>

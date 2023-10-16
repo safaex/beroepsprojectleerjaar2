@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $birthday = $_POST['birthday'];
     $rawPassword = $_POST['password'];
-    $hashedPassword = password_hash($rawPassword, PASSWORD_BCRYPT);
+    $hashedPassword = password_hash($rawPassword, PASSWORD_DEFAULT);
 
     try {
         $stmt = $conn->prepare("SELECT * FROM user_form WHERE email = :email");
