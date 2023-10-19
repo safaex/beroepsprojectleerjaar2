@@ -1,6 +1,6 @@
-CREATE DATABASE webwinkel;
+CREATE DATABASE winkel_bp;
 
-use webwinkel;
+use winkel_bp;
 
 CREATE TABLE  artikel(
 klantID INT AUTO_INCREMENT,
