@@ -77,3 +77,10 @@ body {
     line-height: 1.5;
     color: #555;
 }
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.4);
+}
