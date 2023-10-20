@@ -1,0 +1,14 @@
+CREATE DATABASE webwinkel;
+
+use webwinkel;
+
+CREATE TABLE  artikel(
+klantID INT AUTO_INCREMENT,
+naam VARCHAR(255) NOT NULL, 
+achternaam VARCHAR(255)NOT NULL,
+email VARCHAR(55) NOT NULL,
+artikelnummer INT NOT NULL,
+probleem VARCHAR(55) NOT NULL,
+afpraak DATE NOT NULL,
+PRIMARY KEY(klantID)
+); 
