@@ -85,7 +85,7 @@ if (isset($_POST['submit'])) {
   <footer>
     <h4>Contactgegevens</h4>
     <p><strong>Phonix</strong></p>
-    <p>Adres: Mercopolostraat 12, 1055 PW Amsterdam</p>
+    <p> <a href="https://www.google.com/maps/place/Marco+Polostraat+12,+1057+EL+Amsterdam/@52.3650846,4.8543552,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5e20da6f45ff7:0x4cbc5f54fbfde04e!8m2!3d52.3650814!4d4.8569301?entry=ttu">Adres: Mercopolostraat 12, 1055 PW Amsterdam</a></p>
     <p> <a href="tel:+120-3309321"> Telefoon: 120-3309321</a></p>
     <p><a href="mailto:Phonix@info.com">Phonix@info.com</a> </p>
   </footer>
