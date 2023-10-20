@@ -283,11 +283,8 @@ h1, h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-<<<<<<< HEAD
     background-color: rgb(204, 204, 204);
-=======
-  background-color: #ccc;
->>>>>>> ff05aac40ae6dbbdd6a80bbfc01d12d8d871dfff
+
 }
 
 
