@@ -1,7 +1,7 @@
 <?php
 
-$host = 'localhost:3306';
-$dbname = 'winkel_bp';
+$host = 'localhost:3307';
+$dbname = 'winkel';
 $username = 'root';
 $password = '';
 
