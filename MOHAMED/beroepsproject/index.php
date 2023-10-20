@@ -19,7 +19,6 @@ if (isset($_POST['add_to_cart'])) {
    $product_image = $_POST['product_image'];
    $product_quantity = $_POST['product_quantity'];
 
-   // Use prepared statements to prevent SQL injection
    $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE name = :product_name AND user_id = :user_id");
    $select_cart->bindParam(':product_name', $product_name);
    $select_cart->bindParam(':user_id', $user_id);

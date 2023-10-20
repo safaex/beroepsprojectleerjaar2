@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 
     try {
         $stmt = $conn->prepare("SELECT * FROM user_form WHERE email = :email");
-        $stmt->bindValue(':email', $email);
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -52,10 +52,9 @@ if (isset($_POST['submit'])) {
     <div class="navbar">
         <a href="homepage.php"><img src="images/logo.png" alt="Mijn Logo" class="logo"></a>
         <ul>
-            <li><a href="home.php">HOME</a></li>
+            <li><a href="homepage.php">HOME</a></li>
             <li><a href="overons.php">OVER ONS</a></li>
-            <li><a href="klantservice.php">KLANTENSERVICE</a></li>
-            <li><a href="onzeservice.php">ONZE SERVICE</a></li>
+            <li><a href="klantenservice.php">KLANTENSERVICE</a></li>
             <li><a href="inloggen.php">INLOGGEN</a></li>
         </ul>
     </div>
