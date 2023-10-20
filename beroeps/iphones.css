@@ -283,7 +283,7 @@ h1, h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #484872;
+  background-color: #ccc;
 }
 
 .banner{
@@ -377,11 +377,12 @@ text-transform: uppercase;
     min-height: 100px;
     padding: 20px 80px;
     margin: 0;
-    background: #484872;
+   background-color: #ccc;
     text-align: center;
 }
 .footer p{
     color: whitesmoke;
     margin: 20px auto;
 }
+
 
