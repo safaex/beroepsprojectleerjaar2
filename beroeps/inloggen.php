@@ -48,15 +48,18 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-  <div class="navbar">
-    <a href="homepage.php"><img src="logo.png" alt="Mijn Logo" class="logo"></a>
-    <ul>
-      <li><a href="home.php">HOME</a></li>
-      <li><a href="overons.php">OVER ONS</a></li>
-      <li><a href="klantenservice.php">KLANTENSERVICE</a></li>
-      <li><a href="inloggen.php">INLOGGEN</a></li>
-    </ul>
-  </div>
+        <div class="navbar">
+        <a href="home.php"><img src="images/logo.png" alt="Mijn Logo" class="logo"></a>
+
+
+        <ul>
+            <li><a href="home.php">HOME</a></li>
+            <li><a href="overons.php">OVER ONS</a></li>
+            <li><a href="klantservice.php">KLANTENSERVICE</a></li>
+            <li><a href="onzeservice.php">ONZE SERVICE</a></li>
+            <li><a href="inloggen.php">INLOGGEN</a></li>
+        </ul>
+    </div>
 
   <main>
     <form id="login_form" class="form_class" method="POST">
