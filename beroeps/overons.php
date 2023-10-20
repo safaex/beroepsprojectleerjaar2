@@ -11,7 +11,7 @@
     
 <div class="banner">
     <div class="navbar">
-        <img src="images/logo.png" class="logo"><a href="home.php"><img src="images/logo.png" alt="Mijn Logo" class="logo"></a>
+    <a href="home.php"><img src="images/logo.png" alt="Mijn Logo" class="logo"></a>
     <ul>
         <li><a href="home.php">HOME</a></li>
         <li><a href="overons.php">OVER ONS</a></li>
